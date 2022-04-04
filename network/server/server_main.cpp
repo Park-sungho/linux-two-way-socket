@@ -10,6 +10,8 @@
 #include <unistd.h>
 #include <errno.h>
 
+#include "server_main.h"
+
 using namespace std;
 
 #define SOCKET_DATA_MAX 1024
@@ -19,17 +21,6 @@ using namespace std;
  * @brief Two-way communication 
  * 
  */
-class HelloNetServer
-{
-public:
-    int startSendMessageServer();
-    int startReceiveLoopback();
-    int disconenct();
-
-private:
-    int net_connect_fd;
-};
-
 void *loop_receive(void *socket_fd)
 {
     cout << "Server Ready !!!" << endl;
