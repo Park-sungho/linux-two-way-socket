@@ -79,12 +79,12 @@ int HelloNetServer::startReceiveLoopback()
     setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *) &socket_option, sizeof(socket_option));
 
     int result = [](int fd) {
-        struct sockaddr_in servaddr;
-        memset(&servaddr, 0, sizeof(servaddr));
-        servaddr.sin_family = AF_INET;
-        servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-        servaddr.sin_port = htons(SERVER_SOCKET_PORT);
-        return (bind(fd , (sockaddr *)&servaddr , sizeof(servaddr)) < 0) ? -1: 0;
+        struct sockaddr_in server_address;
+        memset(&server_address, 0, sizeof(server_address));
+        server_address.sin_family = AF_INET;
+        server_address.sin_addr.s_addr = htonl(INADDR_ANY);
+        server_address.sin_port = htons(SERVER_SOCKET_PORT);
+        return (bind(fd , (sockaddr *)&server_address , sizeof(server_address)) < 0) ? -1: 0;
     }(fd);
 
     if (result < 0)
