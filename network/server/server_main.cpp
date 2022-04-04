@@ -130,7 +130,7 @@ int HelloNetServer::startSendMessageServer()
 
         if(send(net_connect_fd , msg_buff , strlen(msg_buff) , 0) == -1)
         {
-            perror("send error.\n");
+            perror("send() failed.\n");
             exit(1);
         }
 
